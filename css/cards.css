@@ -1,0 +1,140 @@
+/* Card Styles - Card flip animations and layouts */
+
+/* Card Flip Container */
+.card-flip-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.card-flip-container.flipped .card-flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Card Front and Back */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 6rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* Card Images */
+.card-image {
+    border-radius: 0.75rem;
+    width: 400px;
+    object-fit: cover;
+}
+
+.card-image-front {
+    aspect-ratio: 86/54;
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.12), 0 8px 15px -3px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-image-front:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.18), 0 15px 25px -5px rgba(0, 0, 0, 0.12);
+}
+
+.card-image-back {
+    aspect-ratio: 54/86;
+}
+
+/* Card Content */
+.card-content {
+    flex: 1;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: rgb(156, 163, 175);
+    margin-bottom: 1rem;
+    text-align: right;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.card-subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(31, 41, 55);
+    margin-bottom: 2rem;
+    text-align: right;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.card-price {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: rgb(156, 163, 175);
+    text-align: right;
+    font-family: 'Vazirmatn', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.card-features {
+    color: rgb(75, 85, 99);
+    text-align: right;
+    font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.625;
+    margin-bottom: 1rem;
+}
+
+.card-action {
+    text-align: right;
+}
+
+.card-button {
+    font-weight: bold;
+    font-family: 'Vazirmatn', sans-serif;
+    text-decoration: underline;
+    transition: all 0.2s ease;
+}
+
+.card-button:hover {
+    text-decoration: none;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgb(229, 231, 235);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(75, 85, 99);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.close-button:hover {
+    background-color: rgb(209, 213, 219);
+    color: rgb(31, 41, 55);
+}

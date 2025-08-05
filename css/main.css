@@ -1,0 +1,58 @@
+/* Main CSS - Base styles and CSS variables */
+
+:root {
+    /* Gold Card Colors */
+    --gold-primary: #B8860B;
+    --gold-hover: #9A7209;
+    
+    /* Silver Card Colors */
+    --silver-primary: #C0C0C0;
+    --silver-hover: #A8A8A8;
+    
+    /* Bronze Card Colors */
+    --bronze-primary: #CD7F32;
+    --bronze-hover: #B8722C;
+}
+
+/* Base body styles */
+body {
+    background-color: #F7F3E9;
+}
+
+/* Gold Card Buttons */
+.gold-button {
+    color: var(--gold-primary);
+}
+.gold-button:hover {
+    color: var(--gold-hover);
+}
+
+/* Silver Card Buttons */
+.silver-button {
+    color: var(--silver-primary);
+}
+.silver-button:hover {
+    color: var(--silver-hover);
+}
+
+/* Bronze Card Buttons */
+.bronze-button {
+    color: var(--bronze-primary);
+}
+.bronze-button:hover {
+    color: var(--bronze-hover);
+}
+
+/* Tab Styles */
+.tab-button {
+    position: relative;
+}
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: currentColor;
+}

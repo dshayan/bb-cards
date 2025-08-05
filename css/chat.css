@@ -1,0 +1,18 @@
+/* Chat Interface Styles */
+
+/* Chat Container */
+.chat-bubble-container {
+    /* Inherits styles from Tailwind classes in HTML */
+}
+
+/* Chat Option Buttons */
+.chat-option-button {
+    /* Base styles handled by Tailwind classes */
+    /* Custom hover effects already defined in HTML classes */
+}
+
+/* Phone Mockup specific styles - keeping minimal since most styling is via Tailwind */
+/* This file is mainly for future chat-specific customizations */
+
+/* Chat message styling - handled by inline classes for now */
+/* Future: Move chat message styles here when expanding chat functionality */

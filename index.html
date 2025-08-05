@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="config.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -19,196 +20,13 @@
             }
         }
     </script>
-    <style>
-        :root {
-            /* Gold Card Colors */
-            --gold-primary: #B8860B;
-            --gold-hover: #9A7209;
-            
-            /* Silver Card Colors */
-            --silver-primary: #C0C0C0;
-            --silver-hover: #A8A8A8;
-            
-            /* Bronze Card Colors */
-            --bronze-primary: #CD7F32;
-            --bronze-hover: #B8722C;
-        }
-        
-        /* Gold Card Buttons */
-        .gold-button {
-            color: var(--gold-primary);
-        }
-        .gold-button:hover {
-            color: var(--gold-hover);
-        }
-        
-        /* Silver Card Buttons */
-        .silver-button {
-            color: var(--silver-primary);
-        }
-        .silver-button:hover {
-            color: var(--silver-hover);
-        }
-        
-        /* Bronze Card Buttons */
-        .bronze-button {
-            color: var(--bronze-primary);
-        }
-        .bronze-button:hover {
-            color: var(--bronze-hover);
-        }
-        
-        /* Tab Styles */
-        .tab-button {
-            position: relative;
-        }
-        .tab-button.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: currentColor;
-        }
-        
-        /* Card Styles */
-        .card-flip-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            perspective: 1000px;
-        }
-        
-        .card-flip-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        
-        .card-flip-container.flipped .card-flip-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            background-color: white;
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            padding: 6rem;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .card-back {
-            transform: rotateY(180deg);
-        }
-        
-        .card-image {
-            border-radius: 0.75rem;
-            width: 400px;
-            object-fit: cover;
-        }
-        
-        .card-image-front {
-            aspect-ratio: 86/54;
-            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.12), 0 8px 15px -3px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-image-front:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.18), 0 15px 25px -5px rgba(0, 0, 0, 0.12);
-        }
-        
-        .card-image-back {
-            aspect-ratio: 54/86;
-        }
-        
-        .card-content {
-            flex: 1;
-        }
-        
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: rgb(156, 163, 175);
-            margin-bottom: 1rem;
-            text-align: right;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        .card-subtitle {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: rgb(31, 41, 55);
-            margin-bottom: 2rem;
-            text-align: right;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        .card-price {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: rgb(156, 163, 175);
-            text-align: right;
-            font-family: 'Vazirmatn', sans-serif;
-            margin-bottom: 1rem;
-        }
-        
-        .card-features {
-            color: rgb(75, 85, 99);
-            text-align: right;
-            font-family: 'Vazirmatn', sans-serif;
-            line-height: 1.625;
-            margin-bottom: 1rem;
-        }
-        
-        .card-action {
-            text-align: right;
-        }
-        
-        .card-button {
-            font-weight: bold;
-            font-family: 'Vazirmatn', sans-serif;
-            text-decoration: underline;
-            transition: all 0.2s ease;
-        }
-        
-        .card-button:hover {
-            text-decoration: none;
-        }
-        
-        .close-button {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 2rem;
-            height: 2rem;
-            background-color: rgb(229, 231, 235);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgb(75, 85, 99);
-            transition: all 0.2s ease;
-            z-index: 10;
-        }
-        
-        .close-button:hover {
-            background-color: rgb(209, 213, 219);
-            color: rgb(31, 41, 55);
-        }
-    </style>
+    
+    <!-- External CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/chat.css">
 </head>
-<body class="min-h-screen px-48 py-16" style="background-color: #F7F3E9;">
+<body class="min-h-screen px-48 py-16">
     <!-- Hero Section -->
     <div class="text-center mb-16">
         <h1 class="text-4xl font-bold text-gray-800 mb-6 font-vazir">
@@ -247,7 +65,7 @@
                         <img src="assets/card-gold.png" alt="Golden Card" class="card-image card-image-front">
                         <div class="card-content">
                             <h1 class="card-title">کارت طلایی 🥇</h1>
-                            <h2 class="card-subtitle">از لحظهٔ تصادف تا آخر تعمیر همراهتیم</h2>
+                            <h2 class="card-subtitle">پشتیبانی اختصاصی، کاهش هزینه‌ها، تعمیر راحت و تضمینی</h2>
                             <h3 class="card-price">از ۵ میلیون تومان</h3>
                             <div class="card-action">
                                 <button class="show-back-card gold-button card-button" data-target="goldFlipContainer">اطلاعات بیشتر</button>
@@ -266,9 +84,9 @@
                         
                         <img src="assets/mock-gold-1.png" alt="Golden Card" class="card-image card-image-back">
                         <div class="card-content">
-                            <h1 class="card-title">کارت طلایی</h1>
+                            <h1 class="card-title">کارت طلایی 🥇</h1>
                             <p class="card-features">
-                                بسته برنزی به همراه:<br/>
+                                کارت برنزی<br/>
                                 دستیار حضوری در تصادف<br/>
                                 ۲۵% تخفیف خرید بیمه بدنه<br/>
                                 گارانتی تعمیر همراه با ۱۵% تخفیف و پرداخت اقساطی<br/>
@@ -294,7 +112,7 @@
                             <img src="assets/card-silver.png" alt="Silver Card" class="card-image card-image-front">
                             <div class="card-content">
                                 <h1 class="card-title">کارت نقره‌ای 🥈</h1>
-                                <h2 class="card-subtitle">حمایت مطمئن در لحظات دشوار</h2>
+                                <h2 class="card-subtitle">پشتیبانی اختصاصی خسارت و کاهش هزینه‌ها</h2>
                                 <h3 class="card-price">از ۳ میلیون تومان</h3>
                                 <div class="card-action">
                                     <button class="show-back-card silver-button card-button" data-target="silverFlipContainer">اطلاعات بیشتر</button>
@@ -313,9 +131,9 @@
                             
                             <img src="assets/mock-silver-1.png" alt="Silver Card" class="card-image card-image-back">
                             <div class="card-content">
-                                <h1 class="card-title">کارت نقره‌ای</h1>
+                                <h1 class="card-title">کارت نقره‌ای 🥈</h1>
                                 <p class="card-features">
-                                    بسته نقره‌ای به همراه:<br/>
+                                    کارت برنزی<br/>
                                     ۱۵% تخفیف خرید بیمه بدنه<br/>
                                     ۵% تخفیف تعمیر خودرو خسارت‌دیده<br/>
                                     و تعمیر در محل<br/>
@@ -340,7 +158,7 @@
                             <img src="assets/card-bronze.png" alt="Bronze Card" class="card-image card-image-front">
                             <div class="card-content">
                                 <h1 class="card-title">کارت برنزی 🥉</h1>
-                                <h2 class="card-subtitle">شروع مسیر امن و مطمئن</h2>
+                                <h2 class="card-subtitle">پشتیبانی اختصاصی خسارت</h2>
                                 <h3 class="card-price">از ۱ میلیون تومان</h3>
                                 <div class="card-action">
                                     <button class="show-back-card bronze-button card-button" data-target="bronzeFlipContainer">اطلاعات بیشتر</button>
@@ -359,9 +177,9 @@
                             
                             <img src="assets/mock-bronze-1.png" alt="Bronze Card" class="card-image card-image-back">
                             <div class="card-content">
-                                <h1 class="card-title">کارت برنزی</h1>
+                                <h1 class="card-title">کارت برنزی 🥉</h1>
                                 <p class="card-features">
-                                    بسته برنزی - پشتیبانی اختصاصی خسارت:<br/>
+                                    پشتیبانی اختصاصی خسارت<br/>
                                     مشاوره ۲۴ ساعته خسارت<br/>
                                     مشاوره حقوقی خسارت<br/>
                                     قیمت‌دهی جدیدی خسارت در صحنه تصادف<br/>
@@ -369,7 +187,6 @@
                                 </p>
                                 <div class="card-action">
                                     <button class="bronze-button card-button">محاسبهٔ هزینه و خرید</button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -379,68 +196,74 @@
     </div>
     </div>
 
-    <script>
-        let currentCard = 'gold';
+    <!-- Chat Interface Section -->
+    <div class="w-full mt-24 mb-16">
+        <!-- Chat Section Title -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 font-vazir">
+                مشاوره هوشمند خسارت
+            </h2>
+            <p class="text-lg text-gray-600 font-vazir">
+                تعیین مقصر، تخمین میزان خسارت و کسورات بیمه
+            </p>
+        </div>
         
-        // Tab switching functionality
-        function switchTab(cardType) {
-            // Hide all card containers
-            document.querySelectorAll('.card-container').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Remove active class from all tabs and reset to gray
-            document.querySelectorAll('.tab-button').forEach(tab => {
-                tab.classList.remove('active');
-                tab.classList.remove('text-yellow-600', 'text-gray-400', 'text-orange-600');
-                tab.classList.add('text-gray-600');
-            });
-            
-            // Show selected card content
-            document.getElementById(cardType + 'Card').classList.remove('hidden');
-            
-            // Add active class and color to selected tab
-            const activeTab = document.getElementById(cardType + 'Tab');
-            activeTab.classList.remove('text-gray-600');
-            activeTab.classList.add('active');
-            
-            if (cardType === 'gold') {
-                activeTab.classList.add('text-yellow-600');
-            } else if (cardType === 'silver') {
-                activeTab.classList.add('text-gray-400');
-            } else if (cardType === 'bronze') {
-                activeTab.classList.add('text-orange-600');
-            }
-            
-            currentCard = cardType;
-        }
-        
-        // Tab event listeners
-        document.getElementById('goldTab').addEventListener('click', () => switchTab('gold'));
-        document.getElementById('silverTab').addEventListener('click', () => switchTab('silver'));
-        document.getElementById('bronzeTab').addEventListener('click', () => switchTab('bronze'));
-        
-        // Show back card functionality (flip animation)
-        document.querySelectorAll('.show-back-card').forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const flipContainer = document.getElementById(targetId);
-                
-                // Add flipped class to trigger flip animation
-                flipContainer.classList.add('flipped');
-            });
-        });
-        
-        // Close back card functionality (flip back)
-        document.querySelectorAll('.close-back-card').forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const flipContainer = document.getElementById(targetId);
-                
-                // Remove flipped class to flip back to front
-                flipContainer.classList.remove('flipped');
-            });
-        });
-    </script>
+        <!-- Chat Interface Container -->
+        <div class="flex justify-center items-center">
+            <!-- Phone Mockup -->
+            <div class="w-[340px] h-[690px] bg-gray-800 rounded-[40px] p-[10px] relative shadow-2xl">
+                <div class="w-full h-full bg-white rounded-[30px] overflow-hidden relative">
+                    <!-- Chat Screen -->
+                    <div class="h-full w-full bg-gray-50 relative p-3 overflow-hidden">
+                        <!-- Chat Header -->
+                        <div class="flex justify-center items-center mb-4 mt-2">
+                            <div class="w-6 h-6 rounded-lg shadow-md overflow-hidden">
+                                <img src="assets/bb-logo.png" alt="BB Logo" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Messages Container -->
+                        <div class="chat-bubble-container flex flex-col space-y-2 h-[calc(100%-8rem)] w-full pb-1 overflow-hidden" dir="rtl">
+                            <!-- Bot Response with Action Buttons -->
+                            <div class="self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm">
+                                <div class="text-xs leading-relaxed font-vazir text-right">
+                                    <p>چطور می‌تونم کمکت کنم؟</p>
+                                    
+                                    <div class="mt-3 space-y-2">
+                                        <button class="chat-option-button bg-yellow-600 text-white px-3 py-1.5 rounded-full text-center text-xs font-bold min-w-[140px] font-vazir hover:bg-yellow-700 transition-colors cursor-pointer w-full">
+                                            بگو مقصر کیه؟
+                                        </button>
+                                        <button class="chat-option-button bg-yellow-600 text-white px-3 py-1.5 rounded-full text-center text-xs font-bold min-w-[140px] font-vazir hover:bg-yellow-700 transition-colors cursor-pointer w-full">
+                                            خسارت چقدر می‌شه؟
+                                        </button>
+                                        <button class="chat-option-button bg-yellow-600 text-white px-3 py-1.5 rounded-full text-center text-xs font-bold min-w-[140px] font-vazir hover:bg-yellow-700 transition-colors cursor-pointer w-full">
+                                            کسورات بیمه چقدر می‌شه؟
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Input -->
+                        <div id="chatInput" class="absolute bottom-3 left-3 right-3 hidden">
+                            <div class="flex items-center bg-white rounded-full shadow-sm border border-gray-200 overflow-hidden">
+                                <input type="text" placeholder="پیام خود را بنویسید..." class="py-2 px-4 text-xs flex-grow outline-none text-right font-vazir" dir="rtl" readonly>
+                                <button class="bg-yellow-600 text-white rounded-full p-1.5 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html>
