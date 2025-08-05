@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Create config.js from secrets
+      run: |
+        cat > config.js << EOF
+        // Configuration file for API keys and settings
+        // Generated automatically during deployment
+        
+        const CONFIG = {
+            GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}',
+            GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+            
+            // Persian system prompts for each consultation action
+            SYSTEM_PROMPTS: {
+                'blame': 'مشاور دوستانه بیمه خودرو هستید. درباره تعیین مقصر تصادف کمک کنید. یک سوال در هر پیام بپرسید. پاسخ گرم و کوتاه بدهید. حداکثر ۱۴۰ کاراکتر.',
+                'damage': 'مشاور مهربان بیمه خودرو هستید. درباره تخمین خسارت راهنمایی کنید. یک سوال در هر پیام بپرسید. پاسخ صمیمی و کوتاه بدهید. حداکثر ۱۴۰ کاراکتر.',
+                'deduction': 'مشاور حمایتگر بیمه خودرو هستید. درباره کسورات بیمه توضیح دهید. یک سوال در هر پیام بپرسید. پاسخ دلسوزانه و کوتاه بدهید. حداکثر ۱۴۰ کاراکتر.',
+                'general': 'مشاور دلسوز بیمه خودرو هستید. به سوالات بیمه و خسارت کمک کنید. یک سوال در هر پیام بپرسید. پاسخ مهربان و کوتاه بدهید. حداکثر ۱۴۰ کاراکتر.'
+            }
+        };
+        EOF
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        exclude_assets: '.github,README.md,.gitignore'
