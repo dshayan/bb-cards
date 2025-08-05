@@ -129,7 +129,7 @@ function showTypingIndicator() {
     typingIndicator.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm typing-indicator';
     typingIndicator.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
-            <p>در حال تایپ...</p>
+            <p>...</p>
         </div>
     `;
     

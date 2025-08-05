@@ -87,7 +87,7 @@
 
 .card-price {
     font-size: 1.125rem;
-    font-weight: bold;
+    font-weight: normal;
     color: rgb(156, 163, 175);
     text-align: right;
     font-family: 'Vazirmatn', sans-serif;
