@@ -8,7 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="config.js"></script>
+    <script>
+        // Try to load config.js, but don't fail if it's not available
+        const configScript = document.createElement('script');
+        configScript.src = 'config.js';
+        configScript.onerror = function() {
+            console.warn('config.js not found. Running in demo mode.');
+        };
+        document.head.appendChild(configScript);
+    </script>
     <script>
         tailwind.config = {
             theme: {

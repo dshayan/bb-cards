@@ -1,17 +1,29 @@
 // Chat functionality and API integration
 
+// Check if CONFIG is available (loaded from config.js)
+const configAvailable = typeof CONFIG !== 'undefined';
+
 // Google Gemini API Configuration (loaded from config.js)
-const GEMINI_API_KEY = CONFIG.GEMINI_API_KEY;
-const GEMINI_API_URL = CONFIG.GEMINI_API_URL;
+const GEMINI_API_KEY = configAvailable ? CONFIG.GEMINI_API_KEY : null;
+const GEMINI_API_URL = configAvailable ? CONFIG.GEMINI_API_URL : 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 // Conversation history for maintaining context
 let conversationHistory = [];
 
-// Persian system prompts loaded from config
-const systemPrompts = CONFIG.SYSTEM_PROMPTS;
+// Persian system prompts loaded from config (with fallback)
+const systemPrompts = configAvailable ? CONFIG.SYSTEM_PROMPTS : {
+    'blame': 'مشاور دوستانه بیمه خودرو هستید. درباره تعیین مقصر تصادف کمک کنید.',
+    'damage': 'مشاور مهربان بیمه خودرو هستید. درباره تخمین خسارت راهنمایی کنید.',
+    'deduction': 'مشاور حمایتگر بیمه خودرو هستید. درباره کسورات بیمه توضیح دهید.',
+    'general': 'مشاور دلسوز بیمه خودرو هستید. به سوالات بیمه و خسارت کمک کنید.'
+};
 
 // Function to get API key from config
 function getApiKey() {
+    if (!configAvailable) {
+        console.warn('Configuration not available. Running in demo mode.');
+        return null;
+    }
     if (!GEMINI_API_KEY || GEMINI_API_KEY === 'your_gemini_api_key_here') {
         console.error('API key not configured. Please update config.js with your Gemini API key.');
         return null;
@@ -19,11 +31,25 @@ function getApiKey() {
     return GEMINI_API_KEY;
 }
 
+// Demo responses for when API is not available
+const demoResponses = {
+    'blame': 'برای تعیین مقصر، لطفاً جزئیات تصادف را شرح دهید. چه اتفاقی افتاده و کدام خودرو از کجا آمده؟',
+    'damage': 'برای تخمین خسارت، لطفاً نوع خسارت و شدت آن را توضیح دهید. آیا عکسی از خسارت دارید؟',
+    'deduction': 'کسورات بیمه بستگی به نوع بیمه‌نامه و سابقه خسارت دارد. چه نوع بیمه‌ای دارید؟',
+    'general': 'چطور می‌تونم در مورد بیمه و خسارت کمکتون کنم؟'
+};
+
+// Function to get demo response
+function getDemoResponse(actionType) {
+    return demoResponses[actionType] || demoResponses.general;
+}
+
 // Function to call Gemini API
 async function callGeminiAPI(message, systemPrompt) {
     const apiKey = getApiKey();
     if (!apiKey) {
-        throw new Error('API key not configured');
+        // Return demo response when no API key is available
+        return 'این یک نسخه نمایشی است. برای استفاده کامل از مشاورهٔ هوشمند، لطفاً API key را تنظیم کنید.';
     }
     
     try {
@@ -245,7 +271,7 @@ async function handleChatInput(messageText) {
     const typingIndicator = showTypingIndicator();
     
     // Use the general consultation prompt from config for follow-up messages
-    const generalPrompt = CONFIG.SYSTEM_PROMPTS.general;
+    const generalPrompt = configAvailable ? CONFIG.SYSTEM_PROMPTS.general : systemPrompts.general;
     
     try {
         // Call Gemini API
