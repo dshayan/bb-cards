@@ -382,14 +382,12 @@ function initializeChat() {
     updateSendButtonState();
 }
 
-// Initialize chat when DOM is ready and config is loaded
+// Initialize chat when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait a bit for config.js to load if it exists
-    setTimeout(() => {
-        console.log('CONFIG available:', typeof CONFIG !== 'undefined');
-        if (typeof CONFIG !== 'undefined') {
-            console.log('API Key configured:', !!CONFIG.GEMINI_API_KEY);
-        }
-        initializeChat();
-    }, 100);
+    console.log('CONFIG available:', typeof CONFIG !== 'undefined');
+    if (typeof CONFIG !== 'undefined') {
+        console.log('API Key configured:', !!CONFIG.GEMINI_API_KEY);
+        console.log('System prompts available:', !!CONFIG.SYSTEM_PROMPTS);
+    }
+    initializeChat();
 });
