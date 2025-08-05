@@ -2,12 +2,12 @@
 
 :root {
     /* Primary Brand Colors */
-    --primary-yellow: #ca8a04; /* yellow-600 */
-    --primary-yellow-hover: #a16207; /* yellow-700 */
-    --primary-yellow-disabled: #d1d5db; /* gray-200 */
+    --brand-primary: #ca8a04; /* yellow-600 */
+    --brand-hover: #a16207; /* yellow-700 */
+    --brand-disabled: #d1d5db; /* gray-200 */
     
     /* Card Theme Colors */
-    --gold-primary: #ca8a04; /* Consolidated with primary yellow */
+    --gold-primary: #ca8a04; /* Consolidated with brand primary */
     --gold-hover: #a16207;
     --silver-primary: #9ca3af; /* gray-400 */
     --silver-hover: #6b7280; /* gray-500 */
@@ -86,18 +86,18 @@ body {
 
 /* Primary Button Styles */
 .btn-primary {
-    background-color: var(--primary-yellow);
+    background-color: var(--brand-primary);
     color: var(--text-white);
 }
 .btn-primary:hover {
-    background-color: var(--primary-yellow-hover);
+    background-color: var(--brand-hover);
 }
 .btn-primary:disabled {
-    background-color: var(--primary-yellow-disabled);
+    background-color: var(--brand-disabled);
     cursor: not-allowed;
 }
 .btn-disabled {
-    background-color: var(--primary-yellow-disabled);
+    background-color: var(--brand-disabled);
     cursor: not-allowed;
 }
 
