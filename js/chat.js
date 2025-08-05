@@ -107,7 +107,7 @@ function addBotMessage(messageText) {
     
     // Create bot message element
     const botMessage = document.createElement('div');
-    botMessage.className = 'self-start max-w-[80%] rounded-2xl p-2 chat-message-bot shadow-sm message-animate';
+    botMessage.className = 'self-end max-w-[80%] rounded-2xl p-2 chat-message-bot shadow-sm message-animate';
     botMessage.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>${messageText}</p>
@@ -136,7 +136,7 @@ function showTypingIndicator() {
     const chatContainer = document.querySelector('.chat-bubble-container');
     
     const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'self-start max-w-[80%] rounded-2xl p-2 chat-message-bot shadow-sm typing-indicator typing-animate';
+    typingIndicator.className = 'self-end max-w-[80%] rounded-2xl p-2 chat-message-bot shadow-sm typing-indicator typing-animate';
     typingIndicator.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>...</p>
@@ -172,7 +172,7 @@ function addUserMessage(messageText) {
     
     // Create user message element
     const userMessage = document.createElement('div');
-    userMessage.className = 'self-end max-w-[60%] rounded-3xl p-2 chat-message-user shadow-sm message-animate';
+    userMessage.className = 'self-start max-w-[60%] rounded-3xl p-2 chat-message-user shadow-sm message-animate';
     userMessage.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>${messageText}</p>
