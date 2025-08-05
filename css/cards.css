@@ -46,6 +46,7 @@
     align-items: center;
     gap: 2rem;
     flex-direction: column;
+    overflow: hidden; /* Prevent content from overflowing container */
 }
 
 /* Desktop layout */
@@ -81,6 +82,7 @@
     max-width: 300px;
     object-fit: cover;
     order: 2; /* Image comes after content on mobile */
+    flex-shrink: 0; /* Prevent image from shrinking too much */
 }
 
 /* Desktop image sizing */
@@ -112,6 +114,22 @@
 
 .card-image-back {
     aspect-ratio: 54/86;
+    max-height: 400px; /* Limit height on mobile to prevent overflow */
+}
+
+/* Mobile-specific styling for card back images */
+@media (max-width: 767px) {
+    .card-image-back {
+        max-height: 350px;
+        width: auto;
+        max-width: 200px; /* Smaller max-width for mobile */
+    }
+    
+    /* Ensure card containers have proper flex behavior on mobile */
+    .card-front, .card-back {
+        justify-content: flex-start; /* Align items to top on mobile */
+        gap: 1.5rem; /* Reduce gap on mobile */
+    }
 }
 
 /* Card Content */
