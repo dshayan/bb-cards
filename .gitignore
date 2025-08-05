@@ -1,4 +1,5 @@
 # Configuration files with sensitive data
+config.api.js
 config.js
 
 # OS generated files

@@ -26,13 +26,40 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Create config.js from template with secret API key
+    - name: Create config.js from prompts and secret API key
       run: |
-        # Copy config.example.js as template and replace the API key
-        cp config.example.js config.js
-        sed -i "s/'your_gemini_api_key_here'/'${{ secrets.GEMINI_API_KEY }}'/g" config.js
-        echo "Generated config.js with updated prompts:"
-        head -5 config.js
+        # Create config.js by combining prompts and API configuration
+        cat > config.js << 'EOF'
+        // Configuration file for API keys and settings
+        // Generated automatically during deployment
+        
+        const CONFIG = {
+            GEMINI_API_KEY: '${{ secrets.GEMINI_API_KEY }}',
+            GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+            
+            // Persian system prompts for each consultation action
+            SYSTEM_PROMPTS: {
+        EOF
+        
+        # Extract prompts from config.prompts.js and add to config.js
+        node -e "
+        const fs = require('fs');
+        const content = fs.readFileSync('config.prompts.js', 'utf8');
+        const promptsMatch = content.match(/const SYSTEM_PROMPTS = \{([\s\S]*?)\};/);
+        if (promptsMatch) {
+          const prompts = promptsMatch[1].trim();
+          console.log(prompts);
+        }
+        " >> config.js
+        
+        # Close the config structure
+        cat >> config.js << 'EOF'
+            }
+        };
+        EOF
+        
+        echo "Generated config.js:"
+        head -10 config.js
         
     - name: Prepare deployment directory
       run: |
