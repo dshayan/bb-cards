@@ -35,5 +35,49 @@
 /* Phone Mockup specific styles - keeping minimal since most styling is via Tailwind */
 /* This file is mainly for future chat-specific customizations */
 
-/* Chat message styling - handled by inline classes for now */
-/* Future: Move chat message styles here when expanding chat functionality */
+/* Chat message animations */
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes messageFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Message animation classes */
+.message-animate {
+    animation: messageSlideIn 0.3s ease-out forwards;
+}
+
+.typing-animate {
+    animation: messageFadeIn 0.2s ease-out forwards;
+}
+
+/* Typing indicator animation */
+@keyframes typingDots {
+    0%, 20% {
+        color: #6b7280;
+    }
+    50% {
+        color: #374151;
+    }
+    100% {
+        color: #6b7280;
+    }
+}
+
+.typing-indicator p {
+    animation: typingDots 1.5s infinite;
+}

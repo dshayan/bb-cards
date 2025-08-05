@@ -253,9 +253,9 @@
                         <div id="chatInput" class="absolute bottom-3 left-3 right-3 hidden">
                             <div class="flex items-center bg-white rounded-full shadow-sm border border-gray-200 overflow-hidden">
                                 <input type="text" placeholder="پیام" class="py-2 px-4 text-xs flex-grow outline-none text-right font-vazir" dir="rtl" readonly>
-                                <button class="bg-yellow-600 text-white rounded-full p-1.5 m-1">
+                                <button id="sendButton" class="bg-yellow-600 text-white rounded-full p-1.5 m-1 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
                                     </svg>
                                 </button>
                             </div>

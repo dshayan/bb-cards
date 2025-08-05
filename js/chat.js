@@ -107,18 +107,28 @@ function addBotMessage(messageText) {
     
     // Create bot message element
     const botMessage = document.createElement('div');
-    botMessage.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm';
+    botMessage.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm message-animate';
     botMessage.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>${messageText}</p>
         </div>
     `;
     
+    // Set initial state for animation
+    botMessage.style.opacity = '0';
+    
     // Add the message to the chat container
     chatContainer.appendChild(botMessage);
     
+    // Trigger animation after a brief delay
+    requestAnimationFrame(() => {
+        botMessage.style.opacity = '1';
+    });
+    
     // Scroll to bottom
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    setTimeout(() => {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, 100);
 }
 
 // Function to show typing indicator
@@ -126,14 +136,23 @@ function showTypingIndicator() {
     const chatContainer = document.querySelector('.chat-bubble-container');
     
     const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm typing-indicator';
+    typingIndicator.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm typing-indicator typing-animate';
     typingIndicator.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>...</p>
         </div>
     `;
     
+    // Set initial state for animation
+    typingIndicator.style.opacity = '0';
+    
     chatContainer.appendChild(typingIndicator);
+    
+    // Trigger animation
+    requestAnimationFrame(() => {
+        typingIndicator.style.opacity = '1';
+    });
+    
     chatContainer.scrollTop = chatContainer.scrollHeight;
     
     return typingIndicator;
@@ -153,18 +172,28 @@ function addUserMessage(messageText) {
     
     // Create user message element
     const userMessage = document.createElement('div');
-    userMessage.className = 'self-end max-w-[60%] rounded-3xl p-2 bg-blue-50 text-blue-900 shadow-sm';
+    userMessage.className = 'self-end max-w-[60%] rounded-3xl p-2 bg-blue-50 text-blue-900 shadow-sm message-animate';
     userMessage.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>${messageText}</p>
         </div>
     `;
     
+    // Set initial state for animation
+    userMessage.style.opacity = '0';
+    
     // Add the message to the chat container
     chatContainer.appendChild(userMessage);
     
+    // Trigger animation
+    requestAnimationFrame(() => {
+        userMessage.style.opacity = '1';
+    });
+    
     // Scroll to bottom (if needed)
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    setTimeout(() => {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }, 100);
 }
 
 // Function to handle AI response for action buttons
@@ -276,12 +305,34 @@ function initializeChat() {
     const inputField = chatInput.querySelector('input');
     const sendButton = chatInput.querySelector('button');
     
+    // Function to update send button state
+    function updateSendButtonState() {
+        const messageText = inputField.value.trim();
+        if (messageText) {
+            sendButton.disabled = false;
+            sendButton.classList.remove('disabled:bg-gray-400', 'disabled:cursor-not-allowed');
+            sendButton.classList.add('bg-yellow-600', 'hover:bg-yellow-700');
+        } else {
+            sendButton.disabled = true;
+            sendButton.classList.add('disabled:bg-gray-400', 'disabled:cursor-not-allowed');
+            sendButton.classList.remove('bg-yellow-600', 'hover:bg-yellow-700');
+        }
+    }
+    
+    // Monitor input changes
+    inputField.addEventListener('input', updateSendButtonState);
+    inputField.addEventListener('keyup', updateSendButtonState);
+    inputField.addEventListener('paste', function() {
+        setTimeout(updateSendButtonState, 10);
+    });
+    
     // Handle send button click
     sendButton.addEventListener('click', function() {
         const messageText = inputField.value.trim();
-        if (messageText) {
+        if (messageText && !sendButton.disabled) {
             handleChatInput(messageText);
             inputField.value = '';
+            updateSendButtonState();
         }
     });
     
@@ -289,12 +340,16 @@ function initializeChat() {
     inputField.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             const messageText = inputField.value.trim();
-            if (messageText) {
+            if (messageText && !sendButton.disabled) {
                 handleChatInput(messageText);
                 inputField.value = '';
+                updateSendButtonState();
             }
         }
     });
+    
+    // Initialize button state
+    updateSendButtonState();
 }
 
 // Initialize chat when DOM is ready
