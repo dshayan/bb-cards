@@ -107,7 +107,7 @@ function addBotMessage(messageText) {
     
     // Create bot message element
     const botMessage = document.createElement('div');
-    botMessage.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm message-animate';
+    botMessage.className = 'self-start max-w-[80%] rounded-2xl p-2 chat-message-bot shadow-sm message-animate';
     botMessage.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>${messageText}</p>
@@ -136,7 +136,7 @@ function showTypingIndicator() {
     const chatContainer = document.querySelector('.chat-bubble-container');
     
     const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'self-start max-w-[80%] rounded-2xl p-2 bg-gray-100 text-gray-800 shadow-sm typing-indicator typing-animate';
+    typingIndicator.className = 'self-start max-w-[80%] rounded-2xl p-2 chat-message-bot shadow-sm typing-indicator typing-animate';
     typingIndicator.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>...</p>
@@ -172,7 +172,7 @@ function addUserMessage(messageText) {
     
     // Create user message element
     const userMessage = document.createElement('div');
-    userMessage.className = 'self-end max-w-[60%] rounded-3xl p-2 bg-blue-50 text-blue-900 shadow-sm message-animate';
+    userMessage.className = 'self-end max-w-[60%] rounded-3xl p-2 chat-message-user shadow-sm message-animate';
     userMessage.innerHTML = `
         <div class="text-xs leading-relaxed font-vazir text-right">
             <p>${messageText}</p>
@@ -310,12 +310,12 @@ function initializeChat() {
         const messageText = inputField.value.trim();
         if (messageText) {
             sendButton.disabled = false;
-            sendButton.classList.remove('disabled:bg-gray-400', 'disabled:cursor-not-allowed');
-            sendButton.classList.add('bg-yellow-600', 'hover:bg-yellow-700');
+            sendButton.classList.remove('btn-disabled');
+            sendButton.classList.add('btn-primary');
         } else {
             sendButton.disabled = true;
-            sendButton.classList.add('disabled:bg-gray-400', 'disabled:cursor-not-allowed');
-            sendButton.classList.remove('bg-yellow-600', 'hover:bg-yellow-700');
+            sendButton.classList.add('btn-disabled');
+            sendButton.classList.remove('btn-primary');
         }
     }
     

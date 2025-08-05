@@ -1,25 +1,53 @@
 /* Main CSS - Base styles and CSS variables */
 
 :root {
-    /* Gold Card Colors */
-    --gold-primary: #B8860B;
-    --gold-hover: #9A7209;
+    /* Primary Brand Colors */
+    --primary-yellow: #ca8a04; /* yellow-600 */
+    --primary-yellow-hover: #a16207; /* yellow-700 */
+    --primary-yellow-disabled: #d1d5db; /* gray-200 */
     
-    /* Silver Card Colors */
-    --silver-primary: #C0C0C0;
-    --silver-hover: #A8A8A8;
+    /* Card Theme Colors */
+    --gold-primary: #ca8a04; /* Consolidated with primary yellow */
+    --gold-hover: #a16207;
+    --silver-primary: #9ca3af; /* gray-400 */
+    --silver-hover: #6b7280; /* gray-500 */
+    --bronze-primary: #ea580c; /* orange-600 */
+    --bronze-hover: #c2410c; /* orange-700 */
     
-    /* Bronze Card Colors */
-    --bronze-primary: #CD7F32;
-    --bronze-hover: #B8722C;
+    /* Text Colors */
+    --text-primary: #1f2937; /* gray-800 */
+    --text-secondary: #4b5563; /* gray-600 */
+    --text-muted: #6b7280; /* gray-500 */
+    --text-light: #9ca3af; /* gray-400 */
+    --text-white: #ffffff;
+    
+    /* Background Colors */
+    --bg-primary: #f7f3e9; /* Cream background */
+    --bg-white: #ffffff;
+    --bg-light: #f9fafb; /* gray-50 */
+    --bg-lighter: #f3f4f6; /* gray-100 */
+    --bg-dark: #1f2937; /* gray-800 */
+    
+    /* Chat Colors */
+    --chat-bot-bg: #f3f4f6; /* gray-100 */
+    --chat-bot-text: #1f2937; /* gray-800 */
+    --chat-user-bg: #f7f3e9; /* Cream */
+    --chat-user-text: #1e3a8a; /* blue-900 */
+    
+    /* Border Colors */
+    --border-light: #d1d5db; /* gray-200 */
+    --border-medium: #d1d5db; /* gray-300 */
+    
+    /* State Colors */
+    --hover-text: #1f2937; /* gray-800 for hover states */
 }
 
 /* Base body styles */
 body {
-    background-color: #F7F3E9;
+    background-color: var(--bg-primary);
 }
 
-/* Gold Card Buttons */
+/* Card Theme Button Styles */
 .gold-button {
     color: var(--gold-primary);
 }
@@ -27,7 +55,6 @@ body {
     color: var(--gold-hover);
 }
 
-/* Silver Card Buttons */
 .silver-button {
     color: var(--silver-primary);
 }
@@ -35,7 +62,6 @@ body {
     color: var(--silver-hover);
 }
 
-/* Bronze Card Buttons */
 .bronze-button {
     color: var(--bronze-primary);
 }
@@ -46,6 +72,7 @@ body {
 /* Tab Styles */
 .tab-button {
     position: relative;
+    color: var(--text-secondary);
 }
 .tab-button.active::after {
     content: '';
@@ -56,3 +83,51 @@ body {
     height: 2px;
     background-color: currentColor;
 }
+
+/* Primary Button Styles */
+.btn-primary {
+    background-color: var(--primary-yellow);
+    color: var(--text-white);
+}
+.btn-primary:hover {
+    background-color: var(--primary-yellow-hover);
+}
+.btn-primary:disabled {
+    background-color: var(--primary-yellow-disabled);
+    cursor: not-allowed;
+}
+.btn-disabled {
+    background-color: var(--primary-yellow-disabled);
+    cursor: not-allowed;
+}
+
+/* Chat Message Styles */
+.chat-message-bot {
+    background-color: var(--chat-bot-bg);
+    color: var(--chat-bot-text);
+}
+.chat-message-user {
+    background-color: var(--chat-user-bg);
+    color: var(--chat-user-text);
+}
+
+/* Text Color Utilities */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-light { color: var(--text-light); }
+.text-white { color: var(--text-white); }
+.text-gold { color: var(--gold-primary); }
+.text-silver { color: var(--silver-primary); }
+.text-bronze { color: var(--bronze-primary); }
+
+/* Background Color Utilities */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-white { background-color: var(--bg-white); }
+.bg-light { background-color: var(--bg-light); }
+.bg-lighter { background-color: var(--bg-lighter); }
+.bg-dark { background-color: var(--bg-dark); }
+
+/* Border Color Utilities */
+.border-light { border-color: var(--border-light); }
+.border-medium { border-color: var(--border-medium); }

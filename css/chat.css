@@ -68,13 +68,13 @@
 /* Typing indicator animation */
 @keyframes typingDots {
     0%, 20% {
-        color: #6b7280;
+        color: var(--text-muted);
     }
     50% {
-        color: #374151;
+        color: var(--text-secondary);
     }
     100% {
-        color: #6b7280;
+        color: var(--text-muted);
     }
 }
 

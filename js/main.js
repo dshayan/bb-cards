@@ -12,8 +12,8 @@ function switchTab(cardType) {
     // Remove active class from all tabs and reset to gray
     document.querySelectorAll('.tab-button').forEach(tab => {
         tab.classList.remove('active');
-        tab.classList.remove('text-yellow-600', 'text-gray-400', 'text-orange-600');
-        tab.classList.add('text-gray-600');
+        tab.classList.remove('text-gold', 'text-silver', 'text-bronze');
+        tab.classList.add('text-secondary');
     });
     
     // Show selected card content
@@ -21,15 +21,15 @@ function switchTab(cardType) {
     
     // Add active class and color to selected tab
     const activeTab = document.getElementById(cardType + 'Tab');
-    activeTab.classList.remove('text-gray-600');
+    activeTab.classList.remove('text-secondary');
     activeTab.classList.add('active');
     
     if (cardType === 'gold') {
-        activeTab.classList.add('text-yellow-600');
+        activeTab.classList.add('text-gold');
     } else if (cardType === 'silver') {
-        activeTab.classList.add('text-gray-400');
+        activeTab.classList.add('text-silver');
     } else if (cardType === 'bronze') {
-        activeTab.classList.add('text-orange-600');
+        activeTab.classList.add('text-bronze');
     }
     
     currentCard = cardType;
