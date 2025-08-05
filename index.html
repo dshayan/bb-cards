@@ -12,8 +12,13 @@
         // Try to load config.js, but don't fail if it's not available
         const configScript = document.createElement('script');
         configScript.src = 'config.js';
+        configScript.onload = function() {
+            console.log('config.js loaded successfully');
+            window.configLoaded = true;
+        };
         configScript.onerror = function() {
             console.warn('config.js not found. Running in demo mode.');
+            window.configLoaded = false;
         };
         document.head.appendChild(configScript);
     </script>

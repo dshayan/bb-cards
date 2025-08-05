@@ -2,6 +2,10 @@
 
 // Check if CONFIG is available (loaded from config.js)
 const configAvailable = typeof CONFIG !== 'undefined';
+console.log('Chat.js loading - CONFIG available:', configAvailable);
+if (configAvailable) {
+    console.log('CONFIG object:', CONFIG);
+}
 
 // Google Gemini API Configuration (loaded from config.js)
 const GEMINI_API_KEY = configAvailable ? CONFIG.GEMINI_API_KEY : null;
@@ -378,7 +382,14 @@ function initializeChat() {
     updateSendButtonState();
 }
 
-// Initialize chat when DOM is ready
+// Initialize chat when DOM is ready and config is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    initializeChat();
+    // Wait a bit for config.js to load if it exists
+    setTimeout(() => {
+        console.log('CONFIG available:', typeof CONFIG !== 'undefined');
+        if (typeof CONFIG !== 'undefined') {
+            console.log('API Key configured:', !!CONFIG.GEMINI_API_KEY);
+        }
+        initializeChat();
+    }, 100);
 });
