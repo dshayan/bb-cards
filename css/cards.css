@@ -1,5 +1,16 @@
 /* Card Styles - Card flip animations and layouts */
 
+/* Card Container - Mobile responsive */
+.card-container {
+    min-height: 600px;
+}
+
+@media (min-width: 768px) {
+    .card-container {
+        min-height: auto;
+    }
+}
+
 /* Card Flip Container */
 .card-flip-container {
     position: relative;
@@ -30,10 +41,33 @@
     background-color: white;
     border-radius: 1.5rem;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    padding: 6rem;
+    padding: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+    .card-front, .card-back {
+        padding: 3rem;
+        flex-direction: row;
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-front, .card-back {
+        padding: 4rem;
+        gap: 4rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .card-front, .card-back {
+        padding: 6rem;
+    }
 }
 
 .card-back {
@@ -43,8 +77,26 @@
 /* Card Images */
 .card-image {
     border-radius: 0.75rem;
-    width: 400px;
+    width: 100%;
+    max-width: 300px;
     object-fit: cover;
+    order: 2; /* Image comes after content on mobile */
+}
+
+/* Desktop image sizing */
+@media (min-width: 768px) {
+    .card-image {
+        width: 350px;
+        max-width: 350px;
+        order: 0; /* Reset order on desktop */
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-image {
+        width: 400px;
+        max-width: 400px;
+    }
 }
 
 .card-image-front {
@@ -65,45 +117,106 @@
 /* Card Content */
 .card-content {
     flex: 1;
+    order: 1; /* Content comes first on mobile */
+    text-align: center;
+}
+
+/* Desktop content alignment */
+@media (min-width: 768px) {
+    .card-content {
+        order: 0; /* Reset order on desktop */
+        text-align: right;
+    }
 }
 
 .card-title {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
     color: rgb(156, 163, 175);
-    margin-bottom: 1rem;
-    text-align: right;
+    margin-bottom: 0.75rem;
+    text-align: center;
     font-family: 'Vazirmatn', sans-serif;
+}
+
+@media (min-width: 768px) {
+    .card-title {
+        font-size: 1.125rem;
+        margin-bottom: 1rem;
+        text-align: right;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-title {
+        font-size: 1.25rem;
+    }
 }
 
 .card-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: bold;
     color: rgb(31, 41, 55);
-    margin-bottom: 2rem;
-    text-align: right;
+    margin-bottom: 1rem;
+    text-align: center;
     font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+    .card-subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        text-align: right;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .card-price {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: normal;
     color: rgb(156, 163, 175);
-    text-align: right;
+    text-align: center;
     font-family: 'Vazirmatn', sans-serif;
     margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .card-price {
+        font-size: 1.125rem;
+        text-align: right;
+    }
 }
 
 .card-features {
     color: rgb(75, 85, 99);
-    text-align: right;
+    text-align: center;
     font-family: 'Vazirmatn', sans-serif;
     line-height: 1.625;
     margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+    .card-features {
+        text-align: right;
+        font-size: 1rem;
+    }
 }
 
 .card-action {
-    text-align: right;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .card-action {
+        text-align: right;
+    }
 }
 
 .card-button {
@@ -111,6 +224,18 @@
     font-family: 'Vazirmatn', sans-serif;
     text-decoration: underline;
     transition: all 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .card-button {
+        padding: 0;
+        border-radius: 0;
+        margin-top: 0;
+    }
 }
 
 .card-button:hover {

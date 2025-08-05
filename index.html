@@ -26,29 +26,29 @@
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/chat.css">
 </head>
-<body class="min-h-screen px-48 pt-16">
+<body class="min-h-screen px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 pt-8 sm:pt-12 md:pt-16">
     <!-- Hero Section -->
-    <div class="text-center mb-16">
-        <h1 class="text-4xl font-bold text-primary mb-6 font-vazir">
+    <div class="text-center mb-8 sm:mb-12 md:mb-16">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 sm:mb-6 font-vazir">
             بسته‌های ویژهٔ بیمه‌بازار
         </h1>
-        <p class="text-xl text-secondary leading-relaxed font-vazir max-w-4xl mx-auto">
+        <p class="text-base sm:text-lg md:text-xl text-secondary leading-relaxed font-vazir max-w-4xl mx-auto px-4">
             از تخفیف بیمه‌نامه تا مشاوره و تعمیر راحت با گارانتی؛ ضرر نمی‌کنی
         </p>
     </div>
     
     <!-- Cards Section -->
-    <div class="w-full h-screen flex flex-col">
+    <div class="w-full min-h-screen md:h-screen flex flex-col">
         <!-- Tab Bar -->
-        <div class="mb-6 z-20 relative">
-            <div class="flex gap-2 justify-center">
-                <button id="goldTab" class="tab-button active px-6 py-3 font-vazir font-medium transition-all duration-200 text-gold">
+        <div class="mb-4 sm:mb-6 z-20 relative">
+            <div class="flex gap-1 sm:gap-2 justify-center overflow-x-auto">
+                <button id="goldTab" class="tab-button active px-3 sm:px-4 md:px-6 py-2 sm:py-3 font-vazir font-medium transition-all duration-200 text-gold text-sm sm:text-base flex-shrink-0">
                     کارت طلایی
                 </button>
-                <button id="silverTab" class="tab-button px-6 py-3 font-vazir font-medium transition-all duration-200 text-secondary">
+                <button id="silverTab" class="tab-button px-3 sm:px-4 md:px-6 py-2 sm:py-3 font-vazir font-medium transition-all duration-200 text-secondary text-sm sm:text-base flex-shrink-0">
                     کارت نقره‌ای
                 </button>
-                <button id="bronzeTab" class="tab-button px-6 py-3 font-vazir font-medium transition-all duration-200 text-secondary">
+                <button id="bronzeTab" class="tab-button px-3 sm:px-4 md:px-6 py-2 sm:py-3 font-vazir font-medium transition-all duration-200 text-secondary text-sm sm:text-base flex-shrink-0">
                     کارت برنزی
                 </button>
             </div>
@@ -197,24 +197,24 @@
     </div>
 
     <!-- Chat Interface Section -->
-    <div class="w-full mt-24 mb-16">
+    <div class="w-full mt-12 sm:mt-16 md:mt-24 mb-8 sm:mb-12 md:mb-16">
         <!-- Chat Section Title -->
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-primary mb-4 font-vazir">
+        <div class="text-center mb-8 sm:mb-10 md:mb-12 px-4">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-3 sm:mb-4 font-vazir">
                 مشاورهٔ هوشمند خسارت
             </h2>
-            <p class="text-lg text-secondary font-vazir">
+            <p class="text-base sm:text-lg text-secondary font-vazir">
                 تعیین مقصر، تخمین میزان خسارت و کسورات بیمه
             </p>
         </div>
         
         <!-- Chat Interface Container -->
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center px-4">
             <!-- Phone Mockup -->
-            <div class="w-[340px] h-[690px] bg-dark rounded-[40px] p-[10px] relative shadow-2xl">
-                <div class="w-full h-full bg-white rounded-[30px] overflow-hidden relative">
+            <div class="w-full max-w-[340px] h-[500px] sm:h-[600px] md:h-[690px] bg-dark rounded-[30px] sm:rounded-[40px] p-[8px] sm:p-[10px] relative shadow-2xl">
+                <div class="w-full h-full bg-white rounded-[20px] sm:rounded-[30px] overflow-hidden relative">
                     <!-- Chat Screen -->
-                    <div class="h-full w-full bg-light relative p-3 overflow-hidden">
+                    <div class="h-full w-full bg-light relative p-2 sm:p-3 overflow-hidden">
                         <!-- Chat Header -->
                         <div class="flex justify-center items-center mb-4 mt-2">
                             <div class="w-6 h-6 rounded-lg shadow-md overflow-hidden">
@@ -267,9 +267,9 @@
     </div>
 
     <!-- Footer Section -->
-    <footer class="w-full mt-16 pt-8 pb-8 border-t border-medium">
-        <div class="flex justify-between items-center text-secondary font-vazir">
-            <div class="text-sm">
+    <footer class="w-full mt-8 sm:mt-12 md:mt-16 pt-6 sm:pt-8 pb-6 sm:pb-8 border-t border-medium">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 text-secondary font-vazir px-4">
+            <div class="text-sm order-2 sm:order-1">
                 <a href="tel:+982188776655" class="flex items-center gap-2 hover:text-primary transition-colors">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
@@ -277,7 +277,7 @@
                     ۰۲۱-۸۸۷۷۶۶۵۵
                 </a>
             </div>
-            <div class="text-sm">
+            <div class="text-sm text-center sm:text-right order-1 sm:order-2">
                 بیمه‌بازار | تحت نظارت بیمهٔ مرکزی
             </div>
         </div>
