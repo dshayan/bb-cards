@@ -44,7 +44,7 @@ jobs:
         # Extract prompts from config.prompts.js and add to config.js
         node -e "
         const fs = require('fs');
-        const content = fs.readFileSync('config.prompts.js', 'utf8');
+        const content = fs.readFileSync('config/prompts.js', 'utf8');
         const promptsMatch = content.match(/const SYSTEM_PROMPTS = \{([\s\S]*?)\};/);
         if (promptsMatch) {
           const prompts = promptsMatch[1].trim();
