@@ -46,13 +46,24 @@ jobs:
         };
         EOF
         
+    - name: Prepare deployment directory
+      run: |
+        mkdir -p _site
+        # Copy all files except .git and .github
+        rsync -av --exclude='.git' --exclude='.github' --exclude='_site' . _site/
+        echo "Files in _site directory:"
+        ls -la _site/
+        echo "Checking config.js in _site:"
+        ls -la _site/config.js
+        head -3 _site/config.js
+        
     - name: Setup Pages
       uses: actions/configure-pages@v5
       
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: '.'
+        path: '_site'
         
     - name: Deploy to GitHub Pages
       id: deployment
