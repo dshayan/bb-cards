@@ -145,6 +145,15 @@ body {
         min-width: 120px;
     }
     
+    /* Ensure proper touch targets for chat option buttons */
+    .chat-option-button {
+        min-height: 44px;
+        min-width: 60px;
+        padding: 12px 16px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+    
     /* Improve text readability on mobile */
     body {
         -webkit-text-size-adjust: 100%;

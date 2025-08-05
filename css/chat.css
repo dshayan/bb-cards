@@ -16,6 +16,9 @@
     /* Custom scrollbar styling for horizontal scroll */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
+    /* Ensure touch events work properly on mobile */
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
 }
 
 .chip-container::-webkit-scrollbar {
