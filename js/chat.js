@@ -278,8 +278,7 @@ function initializeChat() {
     
     // Add event listeners to chat option buttons
     document.querySelectorAll('.chat-option-button').forEach(button => {
-        // Function to handle button click/touch
-        function handleButtonAction() {
+        button.addEventListener('click', function() {
             const messageText = this.textContent.trim();
             let actionType;
             
@@ -298,13 +297,6 @@ function initializeChat() {
             // Hide the chip bar and show the chat input after clicking
             const chipBar = document.getElementById('chipBar');
             chipBar.style.display = 'none';
-        }
-        
-        // Add both click and touchend event listeners for better mobile support
-        button.addEventListener('click', handleButtonAction);
-        button.addEventListener('touchend', function(e) {
-            e.preventDefault(); // Prevent double-firing with click event
-            handleButtonAction.call(this);
         });
     });
     
