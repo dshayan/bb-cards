@@ -14,12 +14,12 @@ const GEMINI_API_URL = configAvailable ? CONFIG.GEMINI_API_URL : 'https://genera
 // Conversation history for maintaining context
 let conversationHistory = [];
 
-// Persian system prompts loaded from config (with fallback)
+// Persian system prompts loaded from config (with minimal fallback)
 const systemPrompts = configAvailable ? CONFIG.SYSTEM_PROMPTS : {
-    'blame': 'مشاور دوستانه بیمه خودرو هستید. درباره تعیین مقصر تصادف کمک کنید.',
-    'damage': 'مشاور مهربان بیمه خودرو هستید. درباره تخمین خسارت راهنمایی کنید.',
-    'deduction': 'مشاور حمایتگر بیمه خودرو هستید. درباره کسورات بیمه توضیح دهید.',
-    'general': 'مشاور دلسوز بیمه خودرو هستید. به سوالات بیمه و خسارت کمک کنید.'
+    'blame': 'مشاور بیمه خودرو',
+    'damage': 'مشاور بیمه خودرو', 
+    'deduction': 'مشاور بیمه خودرو',
+    'general': 'مشاور بیمه خودرو'
 };
 
 // Function to get API key from config
@@ -35,12 +35,12 @@ function getApiKey() {
     return GEMINI_API_KEY;
 }
 
-// Demo responses for when API is not available
+// Simple demo responses for when API is not available
 const demoResponses = {
-    'blame': 'برای تعیین مقصر، لطفاً جزئیات تصادف را شرح دهید. چه اتفاقی افتاده و کدام خودرو از کجا آمده؟',
-    'damage': 'برای تخمین خسارت، لطفاً نوع خسارت و شدت آن را توضیح دهید. آیا عکسی از خسارت دارید؟',
-    'deduction': 'کسورات بیمه بستگی به نوع بیمه‌نامه و سابقه خسارت دارد. چه نوع بیمه‌ای دارید؟',
-    'general': 'چطور می‌تونم در مورد بیمه و خسارت کمکتون کنم؟'
+    'blame': 'لطفاً جزئیات تصادف را شرح دهید.',
+    'damage': 'لطفاً نوع خسارت را توضیح دهید.',
+    'deduction': 'لطفاً نوع بیمه‌نامه خود را مشخص کنید.',
+    'general': 'چطور می‌تونم کمکتون کنم؟'
 };
 
 // Function to get demo response
