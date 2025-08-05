@@ -11,6 +11,27 @@
     /* Custom hover effects already defined in HTML classes */
 }
 
+/* Chip Bar Container */
+.chip-container {
+    /* Custom scrollbar styling for horizontal scroll */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.chip-container::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
+/* Utility class for hiding scrollbars */
+.scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* WebKit */
+}
+
 /* Phone Mockup specific styles - keeping minimal since most styling is via Tailwind */
 /* This file is mainly for future chat-specific customizations */
 

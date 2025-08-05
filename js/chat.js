@@ -241,6 +241,12 @@ async function handleChatInput(messageText) {
 
 // Initialize chat functionality
 function initializeChat() {
+    // Set initial scroll position for chip bar to the right (for RTL)
+    const chipContainer = document.querySelector('.chip-container');
+    if (chipContainer) {
+        chipContainer.scrollLeft = chipContainer.scrollWidth;
+    }
+    
     // Add event listeners to chat option buttons
     document.querySelectorAll('.chat-option-button').forEach(button => {
         button.addEventListener('click', function() {
@@ -259,8 +265,9 @@ function initializeChat() {
             // Handle the action
             handleActionButtonClick(actionType, messageText);
             
-            // Hide the buttons after clicking
-            this.parentElement.style.display = 'none';
+            // Hide the chip bar and show the chat input after clicking
+            const chipBar = document.getElementById('chipBar');
+            chipBar.style.display = 'none';
         });
     });
     
